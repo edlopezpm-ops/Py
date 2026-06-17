@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV Local Generator</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --panel: #ffffff;
+      --ink: #1d2733;
+      --muted: #657384;
+      --line: #d8dee6;
+      --accent: #0f766e;
+      --accent-dark: #0b5f59;
+      --danger: #b42318;
+      --cv-ink: #1d2733;
+      --cv-muted: #5f6b7a;
+      --cv-line: #cfd7df;
+      --cv-accent: #0f766e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(320px, 430px) 1fr;
+    }
+
+    .editor {
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+      padding: 18px;
+      overflow: auto;
+      max-height: 100vh;
+    }
+
+    .preview-zone {
+      padding: 24px;
+      overflow: auto;
+      max-height: 100vh;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 22px 0 10px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      color: var(--muted);
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px 10px;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 4px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 8px 10px;
+      cursor: pointer;
+      min-height: 38px;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn.primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn.danger {
+      color: var(--danger);
+    }
+
+    .group {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      margin-top: 16px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .item-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 10px 0;
+      background: #fbfcfd;
+    }
+
+    .hint {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .json-box {
+      font-family: Consolas, monospace;
+      min-height: 160px;
+      font-size: 12px;
+    }
+
+    .cv-page {
+      width: min(100%, 850px);
+      min-height: 1100px;
+      margin: 0 auto;
+      background: #fff;
+      color: var(--cv-ink);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      padding: 54px 62px;
+    }
+
+    .cv-header {
+      border-bottom: 3px solid var(--cv-accent);
+      padding-bottom: 16px;
+      margin-bottom: 22px;
+    }
+
+    .cv-name {
+      margin: 0 0 4px;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .cv-title {
+      margin: 0;
+      color: var(--cv-accent);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .cv-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 12px;
+      color: var(--cv-muted);
+      font-size: 13px;
+    }
+
+    .cv-section {
+      margin-top: 22px;
+    }
+
+    .cv-section h3 {
+      border-bottom: 1px solid var(--cv-line);
+      color: var(--cv-accent);
+      font-size: 14px;
+      margin: 0 0 10px;
+      padding-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .cv-summary {
+      margin: 0;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .skill-list li {
+      border: 1px solid var(--cv-line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 13px;
+      color: #344054;
+    }
+
+    .cv-entry {
+      margin-bottom: 16px;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .entry-head strong {
+      font-size: 15px;
+    }
+
+    .entry-meta {
+      color: var(--cv-muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .company {
+      margin: 2px 0 6px;
+      color: var(--cv-muted);
+    }
+
+    .cv-entry ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    .cv-entry li {
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 900px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .editor,
+      .preview-zone {
+        max-height: none;
+      }
+
+      .editor {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cv-page {
+        padding: 34px 24px;
+        min-height: auto;
+      }
+
+      .entry-head {
+        display: block;
+      }
+
+      .entry-meta {
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .editor {
+        display: none;
+      }
+
+      .app-shell {
+        display: block;
+      }
+
+      .preview-zone {
+        padding: 0;
+        overflow: visible;
+        max-height: none;
+      }
+
+      .cv-page {
+        width: auto;
+        min-height: auto;
+        box-shadow: none;
+        padding: 0.55in;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="editor" aria-label="Editor del CV">
+      <div class="topbar">
+        <h1>CV Local Generator</h1>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="downloadWordBtn" type="button">Descargar Word</button>
+        <button class="btn" id="printPdfBtn" type="button">PDF</button>
+        <button class="btn" id="exportJsonBtn" type="button">Exportar JSON</button>
+      </div>
+      <p class="hint">Para PDF, usa la ventana de impresion y elige "Save as PDF" o "Guardar como PDF".</p>
+
+      <div class="group">
+        <h2>Perfil</h2>
+        <label for="name">Nombre</label>
+        <input id="name" data-field="profile.name">
+
+        <label for="title">Titulo objetivo</label>
+        <input id="title" data-field="profile.title">
+
+        <div class="row">
+          <div>
+            <label for="location">Ubicacion</label>
+            <input id="location" data-field="profile.location">
+          </div>
+          <div>
+            <label for="phone">Telefono</label>
+            <input id="phone" data-field="profile.phone">
+          </div>
+        </div>
+
+        <label for="email">Email</label>
+        <input id="email" data-field="profile.email">
+
+        <label for="linkedin">LinkedIn</label>
+        <input id="linkedin" data-field="profile.linkedin">
+
+        <label for="summary">Resumen profesional</label>
+        <textarea id="summary" data-field="profile.summary"></textarea>
+      </div>
+
+      <div class="group">
+        <h2>Skills</h2>
+        <label for="skills">Una skill por linea</label>
+        <textarea id="skills"></textarea>
+      </div>
+
+      <div class="group">
+        <h2>Experiencia</h2>
+        <div id="experienceEditor"></div>
+        <button class="btn" id="addExperienceBtn" type="button">Agregar experiencia</button>
+      </div>
+
+      <div class="group">
+        <h2>Educacion</h2>
+        <div id="educationEditor"></div>
+        <button class="btn" id="addEducationBtn" type="button">Agregar educacion</button>
+      </div>
+
+      <div class="group">
+        <h2>Importar JSON</h2>
+        <textarea class="json-box" id="jsonInput" spellcheck="false"></textarea>
+        <div class="actions">
+          <button class="btn primary" id="importJsonBtn" type="button">Cargar JSON</button>
+          <button class="btn" id="loadSampleBtn" type="button">Cargar ejemplo</button>
+        </div>
+        <p class="hint" id="statusMessage">Listo para editar.</p>
+      </div>
+    </section>
+
+    <section class="preview-zone" aria-label="Vista previa del CV">
+      <article class="cv-page" id="cvDocument"></article>
+    </section>
+  </main>
+
+  <script>
+    const sampleData = {
+      profile: {
+        name: "Ed Lopez",
+        title: "Customer Success / Operations Analyst",
+        location: "United States",
+        phone: "+1 000 000 0000",
+        email: "ed@example.com",
+        linkedin: "linkedin.com/in/edlopez",
+        summary: "Customer-focused professional with experience translating business needs into clear processes, documentation, and practical solutions. Strong ability to learn tools quickly, organize information, and communicate across teams."
+      },
+      skills: [
+        "Customer support",
+        "Process documentation",
+        "Data entry",
+        "Excel",
+        "SQL basics",
+        "Python basics",
+        "Bilingual communication"
+      ],
+      experience: [
+        {
+          role: "Operations Support Specialist",
+          company: "Example Company",
+          period: "2023 - Present",
+          bullets: [
+            "Improved daily tracking workflows by organizing recurring tasks, notes, and follow-up actions into repeatable checklists.",
+            "Supported internal teams by documenting process steps and clarifying requirements for common operational requests.",
+            "Used spreadsheet tools to review information, reduce manual errors, and prepare concise updates for stakeholders."
+          ]
+        },
+        {
+          role: "Customer Service Representative",
+          company: "Example Company",
+          period: "2021 - 2023",
+          bullets: [
+            "Handled customer inquiries with a focus on clear communication, empathy, and timely resolution.",
+            "Maintained accurate records and escalated complex cases with complete context for faster follow-up.",
+            "Identified repeated issues and shared improvement ideas with the team."
+          ]
+        }
+      ],
+      education: [
+        {
+          degree: "Professional Development in Programming Fundamentals",
+          institution: "Self-directed learning",
+          period: "2025 - Present"
+        }
+      ]
+    };
+
+    let cvData = structuredClone(sampleData);
+
+    const fields = document.querySelectorAll("[data-field]");
+    const skillsInput = document.querySelector("#skills");
+    const cvDocument = document.querySelector("#cvDocument");
+    const experienceEditor = document.querySelector("#experienceEditor");
+    const educationEditor = document.querySelector("#educationEditor");
+    const statusMessage = document.querySelector("#statusMessage");
+    const jsonInput = document.querySelector("#jsonInput");
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function getValue(path) {
+      return path.split(".").reduce((source, key) => source?.[key], cvData) ?? "";
+    }
+
+    function setValue(path, value) {
+      const keys = path.split(".");
+      const finalKey = keys.pop();
+      const target = keys.reduce((source, key) => source[key], cvData);
+      target[finalKey] = value;
+    }
+
+    function normalizeData(source) {
+      return {
+        profile: {
+          name: source?.profile?.name ?? "",
+          title: source?.profile?.title ?? "",
+          location: source?.profile?.location ?? "",
+          phone: source?.profile?.phone ?? "",
+          email: source?.profile?.email ?? "",
+          linkedin: source?.profile?.linkedin ?? "",
+          summary: source?.profile?.summary ?? ""
+        },
+        skills: Array.isArray(source?.skills) ? source.skills : [],
+        experience: Array.isArray(source?.experience) ? source.experience.map(item => ({
+          role: item?.role ?? "",
+          company: item?.company ?? "",
+          period: item?.period ?? "",
+          bullets: Array.isArray(item?.bullets) ? item.bullets : []
+        })) : [],
+        education: Array.isArray(source?.education) ? source.education.map(item => ({
+          degree: item?.degree ?? "",
+          institution: item?.institution ?? "",
+          period: item?.period ?? ""
+        })) : []
+      };
+    }
+
+    function renderEditors() {
+      fields.forEach(field => {
+        field.value = getValue(field.dataset.field);
+      });
+
+      skillsInput.value = cvData.skills.join("\n");
+
+      experienceEditor.innerHTML = cvData.experience.map((item, index) => `
+        <div class="item-card">
+          <label for="exp-role-${index}">Cargo</label>
+          <input id="exp-role-${index}" data-exp="${index}" data-exp-field="role" value="${escapeHtml(item.role)}">
+
+          <label for="exp-company-${index}">Empresa</label>
+          <input id="exp-company-${index}" data-exp="${index}" data-exp-field="company" value="${escapeHtml(item.company)}">
+
+          <label for="exp-period-${index}">Periodo</label>
+          <input id="exp-period-${index}" data-exp="${index}" data-exp-field="period" value="${escapeHtml(item.period)}">
+
+          <label for="exp-bullets-${index}">Logros, uno por linea</label>
+          <textarea id="exp-bullets-${index}" data-exp="${index}" data-exp-field="bullets">${escapeHtml(item.bullets.join("\n"))}</textarea>
+
+          <div class="actions">
+            <button class="btn danger" type="button" data-remove-exp="${index}">Quitar</button>
+          </div>
+        </div>
+      `).join("");
+
+      educationEditor.innerHTML = cvData.education.map((item, index) => `
+        <div class="item-card">
+          <label for="edu-degree-${index}">Titulo</label>
+          <input id="edu-degree-${index}" data-edu="${index}" data-edu-field="degree" value="${escapeHtml(item.degree)}">
+
+          <label for="edu-institution-${index}">Institucion</label>
+          <input id="edu-institution-${index}" data-edu="${index}" data-edu-field="institution" value="${escapeHtml(item.institution)}">
+
+          <label for="edu-period-${index}">Periodo</label>
+          <input id="edu-period-${index}" data-edu="${index}" data-edu-field="period" value="${escapeHtml(item.period)}">
+
+          <div class="actions">
+            <button class="btn danger" type="button" data-remove-edu="${index}">Quitar</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderPreview() {
+      const profile = cvData.profile;
+      const contact = [profile.location, profile.phone, profile.email, profile.linkedin]
+        .filter(Boolean)
+        .map(item => `<span>${escapeHtml(item)}</span>`)
+        .join("");
+
+      const skills = cvData.skills
+        .filter(Boolean)
+        .map(skill => `<li>${escapeHtml(skill)}</li>`)
+        .join("");
+
+      const experience = cvData.experience.map(item => `
+        <div class="cv-entry">
+          <div class="entry-head">
+            <strong>${escapeHtml(item.role)}</strong>
+            <span class="entry-meta">${escapeHtml(item.period)}</span>
+          </div>
+          <p class="company">${escapeHtml(item.company)}</p>
+          <ul>
+            ${(item.bullets ?? []).filter(Boolean).map(bullet => `<li>${escapeHtml(bullet)}</li>`).join("")}
+          </ul>
+        </div>
+      `).join("");
+
+      const education = cvData.education.map(item => `
+        <div class="cv-entry">
+          <div class="entry-head">
+            <strong>${escapeHtml(item.degree)}</strong>
+            <span class="entry-meta">${escapeHtml(item.period)}</span>
+          </div>
+          <p class="company">${escapeHtml(item.institution)}</p>
+        </div>
+      `).join("");
+
+      cvDocument.innerHTML = `
+        <header class="cv-header">
+          <h2 class="cv-name">${escapeHtml(profile.name)}</h2>
+          <p class="cv-title">${escapeHtml(profile.title)}</p>
+          <div class="cv-contact">${contact}</div>
+        </header>
+
+        <section class="cv-section">
+          <h3>Professional Summary</h3>
+          <p class="cv-summary">${escapeHtml(profile.summary)}</p>
+        </section>
+
+        <section class="cv-section">
+          <h3>Core Skills</h3>
+          <ul class="skill-list">${skills}</ul>
+        </section>
+
+        <section class="cv-section">
+          <h3>Experience</h3>
+          ${experience}
+        </section>
+
+        <section class="cv-section">
+          <h3>Education</h3>
+          ${education}
+        </section>
+      `;
+    }
+
+    function syncJsonBox() {
+      jsonInput.value = JSON.stringify(cvData, null, 2);
+    }
+
+    function refreshScreen() {
+      renderEditors();
+      renderPreview();
+      syncJsonBox();
+    }
+
+    function updateFromSimpleFields(event) {
+      const field = event.target.closest("[data-field]");
+      if (!field) return;
+      setValue(field.dataset.field, field.value);
+      renderPreview();
+      syncJsonBox();
+    }
+
+    function updateFromRepeatingFields(event) {
+      const expInput = event.target.closest("[data-exp]");
+      if (expInput) {
+        const index = Number(expInput.dataset.exp);
+        const key = expInput.dataset.expField;
+        cvData.experience[index][key] = key === "bullets"
+          ? expInput.value.split("\n").map(item => item.trim()).filter(Boolean)
+          : expInput.value;
+        renderPreview();
+        syncJsonBox();
+        return;
+      }
+
+      const eduInput = event.target.closest("[data-edu]");
+      if (eduInput) {
+        const index = Number(eduInput.dataset.edu);
+        const key = eduInput.dataset.eduField;
+        cvData.education[index][key] = eduInput.value;
+        renderPreview();
+        syncJsonBox();
+      }
+    }
+
+    function downloadFile(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function buildWordHtml() {
+      return `
+        <!doctype html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <title>${escapeHtml(cvData.profile.name)} CV</title>
+            <style>${document.querySelector("style").textContent}</style>
+          </head>
+          <body>
+            ${cvDocument.outerHTML}
+          </body>
+        </html>
+      `;
+    }
+
+    document.querySelector(".editor").addEventListener("input", event => {
+      if (event.target === skillsInput) {
+        cvData.skills = skillsInput.value.split("\n").map(item => item.trim()).filter(Boolean);
+        renderPreview();
+        syncJsonBox();
+        return;
+      }
+
+      updateFromSimpleFields(event);
+      updateFromRepeatingFields(event);
+    });
+
+    document.querySelector(".editor").addEventListener("click", event => {
+      const removeExp = event.target.closest("[data-remove-exp]");
+      if (removeExp) {
+        cvData.experience.splice(Number(removeExp.dataset.removeExp), 1);
+        refreshScreen();
+        return;
+      }
+
+      const removeEdu = event.target.closest("[data-remove-edu]");
+      if (removeEdu) {
+        cvData.education.splice(Number(removeEdu.dataset.removeEdu), 1);
+        refreshScreen();
+      }
+    });
+
+    document.querySelector("#addExperienceBtn").addEventListener("click", () => {
+      cvData.experience.push({
+        role: "New role",
+        company: "Company",
+        period: "Year - Year",
+        bullets: ["Describe a measurable achievement."]
+      });
+      refreshScreen();
+    });
+
+    document.querySelector("#addEducationBtn").addEventListener("click", () => {
+      cvData.education.push({
+        degree: "Degree or certification",
+        institution: "Institution",
+        period: "Year"
+      });
+      refreshScreen();
+    });
+
+    document.querySelector("#importJsonBtn").addEventListener("click", () => {
+      try {
+        cvData = normalizeData(JSON.parse(jsonInput.value));
+        refreshScreen();
+        statusMessage.textContent = "JSON cargado correctamente.";
+      } catch (error) {
+        statusMessage.textContent = "El JSON no es valido. Revisa comas, comillas y llaves.";
+      }
+    });
+
+    document.querySelector("#loadSampleBtn").addEventListener("click", () => {
+      cvData = structuredClone(sampleData);
+      refreshScreen();
+      statusMessage.textContent = "Ejemplo cargado.";
+    });
+
+    document.querySelector("#exportJsonBtn").addEventListener("click", () => {
+      downloadFile("cv-data.json", JSON.stringify(cvData, null, 2), "application/json");
+    });
+
+    document.querySelector("#downloadWordBtn").addEventListener("click", () => {
+      downloadFile("cv-generated.doc", buildWordHtml(), "application/msword");
+    });
+
+    document.querySelector("#printPdfBtn").addEventListener("click", () => {
+      window.print();
+    });
+
+    refreshScreen();
+  </script>
+</body>
+</html>
