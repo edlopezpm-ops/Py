@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CVS Interview Command Center</title>
+<style>
+:root {
+  --cvs-red:#c41230;
+  --cvs-red-dark:#8f0d22;
+  --bg:#f6f7fb;
+  --panel:#ffffff;
+  --text:#111827;
+  --muted:#4b5563;
+  --soft:#fdf2f4;
+  --border:#d8dee8;
+  --shadow:0 12px 34px rgba(17,24,39,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);font-size:20px;}
+.topbar{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,var(--cvs-red),var(--cvs-red-dark));color:white;padding:20px 30px;box-shadow:0 10px 28px rgba(80,0,15,.23)}
+.topbar-inner{max-width:1500px;margin:0 auto;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.title h1{margin:0;font-size:32px;line-height:1.08;font-weight:900;letter-spacing:-.03em}
+.title p{margin:6px 0 0;font-size:16px;line-height:1.4;opacity:.92}
+.badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);padding:8px 11px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
+.summary-banner{position:sticky;top:92px;z-index:45;background:white;border-bottom:2px solid var(--cvs-red);box-shadow:0 8px 18px rgba(17,24,39,.05)}
+.summary-inner{max-width:1500px;margin:0 auto;padding:14px 30px;display:flex;gap:18px;align-items:center}
+.summary-label{color:var(--cvs-red);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.summary-text{font-size:17px;line-height:1.45;color:#273247;font-weight:700}
+.layout{max-width:1500px;margin:22px auto 44px;padding:0 30px;display:grid;grid-template-columns:360px minmax(0,1fr);gap:24px;align-items:start}
+.sidebar{position:sticky;top:174px;align-self:start;background:var(--panel);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;max-height:calc(100vh - 198px);display:flex;flex-direction:column}
+.sidebar-head{padding:16px;border-bottom:1px solid var(--border);background:#fff}
+.sidebar-head label{display:block;margin:0 0 8px;font-size:13px;font-weight:900;color:var(--cvs-red);letter-spacing:.08em;text-transform:uppercase}
+#search{width:100%;height:48px;border:1px solid var(--border);border-radius:14px;padding:0 14px;font-size:17px;outline:none}
+#search:focus{border-color:var(--cvs-red);box-shadow:0 0 0 4px rgba(196,18,48,.12)}
+.nav-list{overflow:auto;padding:8px}
+.nav-button{width:100%;border:0;background:transparent;text-align:left;padding:14px 15px;border-radius:15px;cursor:pointer;color:#283348;font-size:16px;line-height:1.3;font-weight:800;display:flex;gap:10px;align-items:flex-start}
+.nav-button:hover{background:#f7f8fc}
+.nav-button.active{background:var(--soft);color:var(--cvs-red);box-shadow:inset 0 0 0 1px rgba(196,18,48,.18)}
+.nav-number{font-size:12px;font-weight:900;color:inherit;opacity:.65;margin-top:2px;min-width:24px}
+.main{min-width:0}
+.answer-card{background:var(--panel);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);padding:38px 46px;margin-bottom:22px;min-height:410px}
+.kicker{font-size:13px;color:var(--cvs-red);font-weight:900;letter-spacing:.09em;text-transform:uppercase;margin:0 0 10px}
+.answer-card h2{font-size:36px;line-height:1.12;margin:0 0 24px;letter-spacing:-.025em;color:#101827}
+.answer-body{max-width:980px;margin:0 auto;text-align:justify;text-justify:inter-word}
+.answer-body p{font-size:22px;line-height:1.72;color:var(--muted);margin:0 0 20px}
+.answer-body p:first-child{font-weight:800;color:#202b3c}
+.answer-body p:last-child{margin-bottom:0}
+.talk-track{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0}
+.track-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:0 8px 20px rgba(17,24,39,.06)}
+.track-card strong{display:block;color:var(--cvs-red);font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.track-card span{font-size:17px;line-height:1.45;color:#314056;font-weight:700}
+.ask-card{background:var(--panel);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);padding:28px 34px}
+.ask-card h3{margin:0 0 14px;font-size:26px;color:#101827}
+.ask-card ul{margin:0;padding-left:24px;color:var(--muted);font-size:19px;line-height:1.75}
+.empty{display:none;padding:18px;color:var(--muted);font-weight:700}
+@media(max-width:980px){
+  .topbar-inner,.summary-inner{display:block}
+  .badges{justify-content:flex-start;margin-top:12px}
+  .summary-banner{position:static}
+  .layout{display:block;padding:0 16px;margin-top:16px}
+  .sidebar{position:relative;top:auto;max-height:360px;margin-bottom:18px}
+  .answer-card{padding:28px 22px;border-radius:22px}
+  .answer-card h2{font-size:30px}
+  .answer-body{text-align:left}
+  .answer-body p{font-size:20px;line-height:1.62}
+  .talk-track{grid-template-columns:1fr}
+  .topbar{position:static;padding:18px 16px}
+  .summary-inner{padding:14px 16px}
+}
+@media(max-width:560px){
+  body{font-size:18px}
+  .title h1{font-size:25px}
+  .answer-card h2{font-size:25px}
+  .answer-body p{font-size:18px}
+  .nav-button{font-size:15px}
+}
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="title">
+        <h1>CVS Health Interview Command Center</h1>
+        <p>Lead Director, Supply Chain Systems · HR Recruiter Quick Reference</p>
+      </div>
+      <div class="badges" aria-label="Role keywords">
+        <span class="badge">Supply Chain Systems</span>
+        <span class="badge">Technology Portfolio</span>
+        <span class="badge">Transformation</span>
+        <span class="badge">WMS / TMS / OMS</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="summary-banner" aria-label="Role summary">
+    <div class="summary-inner">
+      <div class="summary-label">Role Summary</div>
+      <div class="summary-text">Own and modernize a supply chain technology portfolio that improves DC execution, colleague experience, operational efficiency, order accuracy, and scalable product delivery across WMS/TMS/OMS, BI, data, integrations, and enterprise technology partners.</div>
+    </div>
+  </section>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Interview questions">
+      <div class="sidebar-head">
+        <label for="search">Search questions</label>
+        <input id="search" type="text" placeholder="Type to filter…" />
+      </div>
+      <nav id="navList" class="nav-list"></nav>
+      <div id="empty" class="empty">No matching questions.</div>
+    </aside>
+
+    <section class="main">
+      <article class="answer-card" aria-live="polite">
+        <p class="kicker">Suggested Answer</p>
+        <h2 id="questionTitle"></h2>
+        <div id="answerBody" class="answer-body"></div>
+      </article>
+
+      <section class="talk-track" aria-label="Core messages">
+        <div class="track-card"><strong>70% Business</strong><span>Business outcomes, operational value, adoption, user experience.</span></div>
+        <div class="track-card"><strong>20% Leadership</strong><span>Portfolio ownership, stakeholder alignment, prioritization, transformation.</span></div>
+        <div class="track-card"><strong>10% Technology</strong><span>WMS/TMS/OMS, SQL, APIs, BI, ETL, SaaS, integrations.</span></div>
+      </section>
+
+      <section class="ask-card">
+        <h3>Questions to Ask Them</h3>
+        <ul id="askList"></ul>
+      </section>
+    </section>
+  </main>
+
+<script>
+const QUESTIONS = [{"id": "q01", "question": "Tell me about yourself", "answer": ["I've spent the last several years working at the intersection of supply chain operations, enterprise technology, and large-scale distribution environments.", "My background includes warehouse management systems, enterprise integrations, supply chain execution, stakeholder leadership, and technology delivery across complex distribution networks. I've worked extensively with WMS platforms such as Manhattan and have partnered closely with operations teams, IT organizations, and executive stakeholders to improve operational performance and user experience.", "What excites me most is helping organizations translate business strategy into technology solutions that deliver measurable outcomes at scale."]}, {"id": "q02", "question": "Why are you interested in this role?", "answer": ["This role combines three areas I've spent most of my career supporting: supply chain operations, technology transformation, and business leadership.", "I'm particularly interested in the opportunity to influence a technology portfolio that spans warehouse systems, operational processes, user experience, and modernization initiatives while partnering closely with both business and technology teams."]}, {"id": "q03", "question": "Why are you leaving Manhattan Associates?", "answer": ["Manhattan went through organizational changes and my role was impacted as part of a workforce reduction.", "After eight successful years and multiple promotions, I'm looking for an opportunity where I can contribute at a broader strategic level while continuing to leverage my supply chain systems experience."]}, {"id": "q04", "question": "Why CVS?", "answer": ["CVS operates at an incredible scale where supply chain technology directly impacts customer and patient outcomes.", "The opportunity to contribute to transformation and modernization initiatives within such a large and operationally complex network is extremely compelling.", "I also appreciate the focus on balancing operational excellence, technology innovation, and colleague experience."]}, {"id": "q05", "question": "What makes you a good fit for this role?", "answer": ["My background aligns closely with the core objectives of the position.", "I've spent years helping organizations improve warehouse operations, system reliability, process efficiency, and technology adoption while working across business, operations, and technical teams.", "I understand that successful transformation isn't just about deploying technology, it's about driving measurable operational value and sustainable adoption."]}, {"id": "q06", "question": "Tell me about your WMS experience", "answer": ["My strongest experience is within enterprise warehouse management environments supporting high-volume distribution operations.", "I've worked across implementations, production support, integrations, process optimization, system enhancements, and stakeholder management.", "While my primary experience has been within the Manhattan ecosystem, I've spent much of my career collaborating across broader supply chain technology landscapes that include WMS, OMS, transportation systems, reporting platforms, APIs, and enterprise integration frameworks."]}, {"id": "q07", "question": "Tell me about your project leadership experience", "answer": ["I've led and supported large-scale technology initiatives involving operations teams, IT organizations, vendors, and executive stakeholders.", "My focus has consistently been on aligning business objectives, managing risk, prioritizing resources, and ensuring solutions deliver measurable operational outcomes.", "Success isn't simply delivering technology, it's delivering business results."]}, {"id": "q08", "question": "How technical are you?", "answer": ["I'm highly technical from a systems and business technology perspective.", "I'm comfortable working with SQL Server, Oracle environments, APIs, REST services, JSON integrations, reporting platforms, data flows, and enterprise SaaS ecosystems.", "I've also spent significant time partnering with engineering teams on integration architectures, troubleshooting, and solution design.", "That said, my greatest value comes from translating technical complexity into business decisions and operational improvements."]}, {"id": "q09", "question": "How do you define product ownership?", "answer": ["For me, product ownership starts with understanding the operational problem and desired business outcome.", "My role is to ensure we're solving the right problem, prioritizing the right opportunities, and balancing business value, technical feasibility, and user experience.", "Success isn't measured by the number of features delivered, it's measured by adoption, efficiency gains, operational improvements, and business impact."]}, {"id": "q10", "question": "How do you balance business viability, feasibility, and desirability?", "answer": ["I start by understanding the operational challenge and business objective.", "From there, I work with business stakeholders to assess value, technology teams to evaluate feasibility, and end users to understand adoption and usability considerations.", "The most successful solutions are rarely the most technically sophisticated, they're the ones that solve the problem, get adopted, and create measurable value."]}, {"id": "q11", "question": "Tell me about your leadership style", "answer": ["My leadership style is collaborative, pragmatic, and execution-focused.", "I believe leaders need to understand operational realities while maintaining visibility into broader strategic priorities.", "I focus on alignment, transparency, accountability, and helping teams stay focused on outcomes rather than activities."]}, {"id": "q12", "question": "How do you handle competing priorities?", "answer": ["I prioritize based on business impact, operational risk, customer experience, and strategic value.", "In large organizations there will always be more opportunities than available resources, so effective prioritization and stakeholder alignment become critical.", "My goal is ensuring the organization remains focused on initiatives that create the greatest measurable value."]}, {"id": "q13", "question": "How do you work with difficult stakeholders?", "answer": ["I focus on understanding objectives first and positions second.", "Most conflicts come from competing priorities rather than bad intentions.", "By aligning conversations around business outcomes, operational impact, and data-driven decision making, it's usually possible to build consensus and move forward effectively."]}, {"id": "q14", "question": "Tell me about a challenging situation", "answer": ["I've worked through multiple production-impacting supply chain incidents where operational continuity was at risk.", "The key has always been coordinating technical teams, operations leadership, vendors, and business stakeholders while maintaining clear communication and driving resolution.", "In these situations, leadership and communication are often just as important as technical expertise."]}, {"id": "q15", "question": "Tell me about your experience with analytics and reporting", "answer": ["I've worked extensively with operational reporting, SQL-based analysis, dashboards, and performance metrics used to support business decisions.", "While I wouldn't position myself as a dedicated BI developer, I'm comfortable leveraging tools such as Power BI, Tableau, Cognos, reporting platforms, and SQL-based analytics to help drive operational visibility and decision making."]}, {"id": "q16", "question": "Are you comfortable with 50 percent travel?", "answer": ["Yes, absolutely.", "I've worked with customers and teams across multiple countries and understand the importance of building relationships directly with operational and leadership teams."]}, {"id": "q17", "question": "What are your salary expectations?", "answer": ["Based on the scope of the role, the leadership responsibilities, and my experience, I believe a package around the mid-160s is appropriate.", "That said, I'm open to discussing the overall compensation structure, including base salary, bonus opportunities, and equity components."]}, {"id": "q18", "question": "Do you require sponsorship?", "answer": ["Yes. I'm currently on H-1B status and would require an H-1B transfer.", "This would not be a new lottery case since I've already been counted against the H-1B cap.", "The process would involve a standard transfer filing rather than a cap-subject petition, and premium processing is available if needed.", "My previous approvals have been straightforward, so this would be a typical H-1B transfer process."]}];
+const QUESTIONS_TO_ASK = ["What are the biggest priorities for this role during the first 6 to 12 months?", "What are the largest transformation or modernization initiatives currently underway?", "How is the Supply Chain Systems organization structured today?", "What are the biggest technology or operational challenges the team is focused on solving?", "What does success look like for the person hired into this role during the first year?"];
+const navList = document.getElementById('navList');
+const search = document.getElementById('search');
+const empty = document.getElementById('empty');
+const questionTitle = document.getElementById('questionTitle');
+const answerBody = document.getElementById('answerBody');
+const askList = document.getElementById('askList');
+let activeId = QUESTIONS[0]?.id;
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+}
+
+function renderNav(filter = '') {
+  const q = filter.trim().toLowerCase();
+  const matches = QUESTIONS.filter(item =>
+    item.question.toLowerCase().includes(q) || item.answer.join(' ').toLowerCase().includes(q)
+  );
+  navList.innerHTML = matches.map((item) => {
+    const originalIndex = QUESTIONS.findIndex(x => x.id === item.id) + 1;
+    return `<button class="nav-button ${item.id === activeId ? 'active' : ''}" type="button" data-id="${item.id}">
+      <span class="nav-number">${String(originalIndex).padStart(2,'0')}</span>
+      <span>${escapeHtml(item.question)}</span>
+    </button>`;
+  }).join('');
+  empty.style.display = matches.length ? 'none' : 'block';
+  navList.querySelectorAll('.nav-button').forEach(btn => {
+    btn.addEventListener('click', () => selectQuestion(btn.dataset.id));
+  });
+}
+
+function selectQuestion(id) {
+  const item = QUESTIONS.find(x => x.id === id) || QUESTIONS[0];
+  activeId = item.id;
+  questionTitle.textContent = item.question;
+  answerBody.innerHTML = item.answer.map(p => `<p>${escapeHtml(p)}</p>`).join('');
+  renderNav(search.value);
+}
+
+function init() {
+  askList.innerHTML = QUESTIONS_TO_ASK.map(q => `<li>${escapeHtml(q)}</li>`).join('');
+  renderNav();
+  selectQuestion(activeId);
+  search.addEventListener('input', () => renderNav(search.value));
+  window.addEventListener('keydown', (e) => {
+    const currentIndex = QUESTIONS.findIndex(x => x.id === activeId);
+    if(e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = QUESTIONS[Math.min(currentIndex + 1, QUESTIONS.length - 1)];
+      selectQuestion(next.id);
+    }
+    if(e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prev = QUESTIONS[Math.max(currentIndex - 1, 0)];
+      selectQuestion(prev.id);
+    }
+  });
+}
+init();
+</script>
+</body>
+</html>
