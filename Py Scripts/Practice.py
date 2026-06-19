@@ -124,9 +124,9 @@ print(f"HUNDREDWEIGHT RATES: {HundredWeight:<12}")
 
 #output con condicional
 if T_QTY > 100 :
-    print(f"Hundred Weight Shipment, Total Freigh Charges: ${T_QTY*HundredWeight}")
+    print(f"Hundred Weight Shipment, Total Freight Charges: ${T_QTY*HundredWeight}")
 else:
-    print(f"No Freigh Charges Applied for {T_QTY} {REQ_UOM}")
+    print(f"No Freight Charges Applied for {T_QTY} {REQ_UOM}")
 
 #Fin del SCRIPT
 #***
