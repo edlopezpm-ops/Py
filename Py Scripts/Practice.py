@@ -25,28 +25,44 @@ mensaje1 = "Operacion 1"
 mensaje2 = "Operacion 2"
 mensaje3 = "Operacion 3"
 
-glosario = {
-    mensaje1: result1,
-    mensaje2: result2,
-    mensaje3: result3,
-           }
-
 #output - final - print
 
 print("=" * 25)
 
-if result1 + result3 : 
+if result1 + result3: 
       print ("Es válida:",mensaje1)
-else:
+elif result2:
       print ("Es válida:",mensaje2)
+else:
+      print ("Es válida:",mensaje3)
 
-#funcion glosario
+#otra forma de output con función
+print("=" * 25)
+print(separation)
+"""ARREGLAR ESTO MAÑANA"""
+def elegir_mensaje(result1, result2, result3):
+    if result1 + result3:
+        print ("Función válida:",mensaje1)
+    elif result2:
+        print ("Función válida:",mensaje2)
+    elif result3 > result1:
+        print ("Función válida:",mensaje3)
+    else:
+        print("No aplica ninguna condición")
+
 """
 notar que aquí se crearon varias variables/parámetros que no estaban antes
 "imprimir" es el nombre de la función
 "mensaje" y "resultado" se crean para capturar los rows en "glosario" arriba
 se llaman en la fución con "items"cls, para luego armar el print
 """
+
+#función glosario
+glosario = {
+    mensaje1: result1,
+    mensaje2: result2,
+    mensaje3: result3,
+           }
 
 def imprimir(funcion_imprimir):
     for mensaje, resultado in funcion_imprimir.items():
@@ -84,12 +100,12 @@ T_QTY = QTY * REQ
 HundredWeight = 0.2
 
 #output
-print("=" * 40)
-print(f"HUNDREDWEIGHT RATES::{HundredWeight:<12}")
+print("=" * 60)
+print(f"HUNDREDWEIGHT RATES: {HundredWeight:<12}")
 if T_QTY > 100 :
     print(f"Hundred Weight Shipment, Total Freigh Charges: ${T_QTY*HundredWeight}")
 else:
     print(f"No Freigh Charges Applied for {T_QTY} {REQ_UOM}")
-print("=" * 40)
+print("=" * 60)
 
 print(separation)
