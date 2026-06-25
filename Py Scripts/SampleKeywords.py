@@ -52,3 +52,5 @@ for kw in keyword.kwlist:
 
 print("=" * 20)
 print(f"Total de keywords: {len(keyword.kwlist)}")
+
+ejemput = int(input("queloque"))
