@@ -34,11 +34,11 @@ for row in data:
 
 print(line)
 
-"""
-*******************************
-mini programa input con while
-*******************************
-"""
+
+#*******************************
+#mini programa input con while
+#*******************************
+
 
 #variables principales
 meta = float(input("¿Cuánto quieres ahorrar? : "))
@@ -55,10 +55,23 @@ while ahorro < meta:
 
 # esto imprime cuando se logre el total acumulado esperado
 # esta lógica innecesaria y overkill es sólo para entender cómo trabajar el for
-# confirmacion = {"Tu":"meta","fue":"completada"}
-# for meta2, completada in confirmacion.items():
-#     print(f"{meta2}{completada}")
+confirmacion = {"Tu":" meta","fue":" completada"}
+for meta2, completada in confirmacion.items():
+    print(f"{meta2}{completada}")
 
 # confirmacion = str(ahorro)
 # for total_ahorro in confirmacion:
 #     print(f"Total ahorro {total_ahorro}")
+
+
+#*******************************
+#mini programa comida
+#*******************************
+
+
+dale = str(input("¿Quieres carne con vegetales?:  ")).strip()
+if len(dale)==2 and dale.upper() == "SI":
+    print("Ok, yo te la hago y comemos juntos")
+elif dale.upper() != "SI":
+    input("Ah, ¿qué quieres comer entonces?:  ")
+    print("Bueh, traé comida pueh...")

@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.venv/
+venv/
+
+build/
+*.spec
+
+output/pdf/*.pdf
+
+# Keep the generated EXE folder local unless you intentionally publish a release.
+dist/
+
+# Private Codex working instructions. Keep these local.
+CODEX.MD
+**/CODEX.MD
