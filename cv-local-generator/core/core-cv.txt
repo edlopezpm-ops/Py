@@ -1,0 +1,91 @@
+ED LOPEZ
+Atlanta, GA | [edlopezpm@gmail.com](mailto:edlopezpm@gmail.com) | 678-707-0641
+H-1B Transfer Eligible | Open to Travel | Remote / Hybrid / Onsite
+
+# SUPPLY CHAIN TECHNOLOGY LEADER | WMS | ERP | PROGRAM MANAGEMENT | ENTERPRISE SYSTEMS
+
+Enterprise technology and supply chain professional with 17+ years of experience leading warehouse systems, ERP ecosystems, enterprise software delivery, SaaS platforms, technical consulting, customer success, production support, and cross-functional teams across North and Latin America. Combines hands-on technical expertise with leadership experience managing implementations, operations, support organizations, customer engagements, and strategic technology initiatives. Experienced working with executive leadership, engineering teams, warehouse operations, finance, and business stakeholders in complex enterprise environments.
+
+## CORE EXPERTISE
+
+### Supply Chain & Operations
+
+Warehouse Management Systems (WMS) • Order Management Systems (OMS/DOM) • Supply Chain Execution • Inventory Control • Receiving • Putaway • Replenishment • Picking • Packing • Shipping • Returns • Work Orders • Labor Management • Distribution Center Operations • Warehouse Automation • WCS/WES Integrations • Transportation Processes • GS1 Standards • BOL Documentation • Manufacturing & Fulfillment Operations
+
+### Enterprise Technology
+
+SQL Server • Oracle • REST APIs • XML • JSON • Azure Cloud • Azure DevOps • GitHub • VS Code • Postman • SSRS • ETL Concepts • Data Analysis • Reporting Automation • Enterprise Integrations • SaaS Platforms • Cloud Operations • Production Support • Release Management • SDLC • Root Cause Analysis
+
+### Enterprise Applications
+
+Manhattan SCALE WMS • Manhattan Active WM • Manhattan Active OMNI (DOM) • SCI • Labor Management • SAP • Salesforce • NetSuite • Epicor/Datex • CRM Platforms • Microsoft 365
+
+### Leadership & Delivery
+
+Program Management • Project Management • PMO • Team Leadership • Resource Planning • Executive Stakeholder Management • Escalation Management • Customer Success • Operational Governance • Strategic Planning • Process Improvement • Coaching & Mentoring • Cross-Functional Leadership
+
+---
+
+# PROFESSIONAL EXPERIENCE
+
+## MANHATTAN ASSOCIATES
+
+Principal Support Consultant | Project Manager | Support Manager | Senior Consultant | 2018 – 2026
+
+* Supported Fortune 500 organizations operating large-scale warehouse, distribution, fulfillment, transportation, and supply chain environments.
+* Led enterprise software implementations, upgrades, migrations, rollouts, stabilization efforts, and operational transformation initiatives.
+* Managed customer-facing programs involving consulting, project management, production support, operations leadership, and executive stakeholders.
+* Led teams across the United States, Mexico, Brazil, and Chile, including consultants, support engineers, technical specialists, and project resources.
+* Served as escalation leader for critical production incidents impacting inventory, shipping, receiving, allocation, integrations, and warehouse operations.
+* Designed and supported enterprise integrations involving APIs, XML, JSON, ERP systems, warehouse automation, MHE, WCS/WES, and custom extensions.
+* Developed advanced SQL-based troubleshooting, operational recovery procedures, reporting solutions, and data correction strategies.
+* Managed customer success, service delivery, governance reviews, RCA initiatives, roadmap discussions, and executive communications.
+* Participated in cloud-hosted and SaaS deployments utilizing Azure-based environments and enterprise integration architectures.
+* Implemented and supported Manhattan SCALE WMS, SCI, Active OMNI (DOM), Labor Management, reporting platforms, and custom supply chain solutions.
+* Collaborated directly with engineering, architecture, cloud operations, product management, implementation teams, and customer leadership.
+* Utilized GitHub, Azure DevOps, VS Code, SQL Server, C#, Java, REST APIs, XML, JSON, Postman, and related technologies to support customer environments.
+* Traveled extensively across North and Latin America supporting implementations, customer workshops, go-lives, and strategic initiatives.
+
+## IPSOS INTERACTIVE SERVICES
+
+Team Leader | Senior Project Manager | 2013 – 2018
+
+* Led multinational project teams delivering large-scale market research, technology, reporting, and operational programs.
+* Managed project portfolios ranging from rapid Agile engagements to long-term enterprise initiatives with global stakeholders.
+* Supervised project managers, coordinated staffing, performance management, workload balancing, and professional development.
+* Developed KPI dashboards, reporting automation, productivity metrics, operational analytics, and executive reporting solutions.
+* Utilized Salesforce, SQL, Excel, NetSuite, proprietary SaaS platforms, and reporting technologies to support business operations.
+* Coordinated software development, testing, deployment, QA validation, questionnaire design, and production release activities.
+* Partnered with technical teams across the United States, Canada, India, Chile, and Latin America.
+* Improved operational efficiency through process optimization, governance controls, escalation management, and team coaching.
+
+---
+
+# EARLY CAREER FOUNDATION
+
+Built practical expertise in operations management, manufacturing, maintenance, inventory control, supply chain processes, ERP systems, project coordination, financial operations, industrial environments, customer service, and business process improvement through progressively responsible roles in manufacturing, distribution, retail, finance, franchise operations, and project-based organizations in Venezuela and Chile.
+
+Key exposure includes:
+SAP • Epicor/Datex WMS • Microsoft Project • AutoCAD • Inventory Management • Financial Operations • Cost Control • Franchise Operations • Manufacturing Processes • Maintenance Planning • EH&S • Quality Systems • Operations Leadership • Business Analytics
+
+---
+
+# EDUCATION
+
+Postgraduate Specialization – Human Resources Management
+UNEFA
+
+Associate Degree Equivalent – Business & Maintenance Administration
+IUTC
+
+---
+
+# ADDITIONAL INFORMATION
+
+Languages: English (Fluent), Spanish (Native)
+
+Work Authorization: H-1B Cap Counted – Transfer Eligible
+
+Leadership Experience: Managed teams of up to 9 direct reports across multiple countries.
+
+Industry Experience: Supply Chain, Logistics, Distribution, Warehousing, Retail, Manufacturing, Market Research, Finance, SaaS, Enterprise Software, Consulting.
