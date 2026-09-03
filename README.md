@@ -56,4 +56,4 @@ reuse its contents.
 
 ---
 
-Built with the **[AI Engineering Knowledge Repo (AEKR)](https://aekr.io)** workflow.
+Built with the **[AI Engineering Knowledge Racking (AEKR)](https://aekr.io)** workflow.
