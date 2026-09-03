@@ -12,7 +12,7 @@ diccionario = {
         "llave 3": "valor llave 3"
 }
 #para llamarlo necesitas mencional la llave o el valor en []
-print(f"Esto imprime el diccionario que es '{diccionario["llave 3"]}'")
+print(f"Esto imprime el diccionario que es '{diccionario['llave 3']}'")
 
 dic2 = {
         "llave1":
