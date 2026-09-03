@@ -53,3 +53,7 @@ under one Human Orchestrator in Chief (HOC); this is not an independent audit.
 
 No license has been selected for this repository. Public visibility does not grant permission to
 reuse its contents.
+
+---
+
+Built with the **[AI Engineering Knowledge Repo (AEKR)](https://aekr.io)** workflow.
