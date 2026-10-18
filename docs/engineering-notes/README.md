@@ -23,3 +23,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Observe a decorated call and its returned value](decorator-invocation.md)
 - [Replay bounded confirmation and QC prompt paths](container-prompt-paths.md)
 - [Compare explanatory keyword maps with the interpreter](keyword-runtime-map.md)
+- [Inject a renderer and reject an empty message](greeting-dependency-injection.md)
