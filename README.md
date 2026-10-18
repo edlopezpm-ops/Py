@@ -54,6 +54,11 @@ under one Human Orchestrator in Chief (HOC); this is not an independent audit.
 No license has been selected for this repository. Public visibility does not grant permission to
 reuse its contents.
 
+<!-- (kommiBo) Source-backed documentation navigation. -->
+## Engineering recipes
+
+See the [engineering notes](docs/engineering-notes/README.md) for reproducible examples, source references and validation limits.
+
 ---
 
 Built with the **[AI Engineering Knowledge Racking (AEKR)](https://aekr.io)** workflow.
