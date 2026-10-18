@@ -17,3 +17,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 ## Recipes
 
 - [Inspect source without launching applications](syntax-inventory.md)
+- [Trace arithmetic and truthy conditions](arithmetic-and-truthiness.md)
