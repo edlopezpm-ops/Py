@@ -20,3 +20,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Trace arithmetic and truthy conditions](arithmetic-and-truthiness.md)
 - [Check the shipping unit and threshold example](unit-conversion-boundary.md)
 - [Navigate nested dictionaries and count repeated values](dictionary-navigation.md)
+- [Observe a decorated call and its returned value](decorator-invocation.md)
