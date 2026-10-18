@@ -21,3 +21,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Check the shipping unit and threshold example](unit-conversion-boundary.md)
 - [Navigate nested dictionaries and count repeated values](dictionary-navigation.md)
 - [Observe a decorated call and its returned value](decorator-invocation.md)
+- [Replay bounded confirmation and QC prompt paths](container-prompt-paths.md)
