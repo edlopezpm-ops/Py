@@ -18,3 +18,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 
 - [Inspect source without launching applications](syntax-inventory.md)
 - [Trace arithmetic and truthy conditions](arithmetic-and-truthiness.md)
+- [Check the shipping unit and threshold example](unit-conversion-boundary.md)
