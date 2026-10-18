@@ -25,3 +25,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Compare explanatory keyword maps with the interpreter](keyword-runtime-map.md)
 - [Inject a renderer and reject an empty message](greeting-dependency-injection.md)
 - [Prepare a synthetic fixed-width profiling input](profiling-input-contract.md)
+- [Clean vacancy markup and inspect token boundaries](cv-text-cleaning.md)
