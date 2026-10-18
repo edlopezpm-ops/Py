@@ -27,3 +27,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Prepare a synthetic fixed-width profiling input](profiling-input-contract.md)
 - [Clean vacancy markup and inspect token boundaries](cv-text-cleaning.md)
 - [Normalize a synthetic CV into the current data shape](cv-normalization.md)
+- [Parse synthetic core sections and skill separators](cv-core-sections.md)
