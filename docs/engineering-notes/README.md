@@ -29,3 +29,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Normalize a synthetic CV into the current data shape](cv-normalization.md)
 - [Parse synthetic core sections and skill separators](cv-core-sections.md)
 - [Explain keyword weighting and stable ordering](cv-keyword-ranking.md)
+- [Inspect adaptation without writing files or inventing skills](cv-adaptation-boundary.md)
