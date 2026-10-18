@@ -31,3 +31,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Explain keyword weighting and stable ordering](cv-keyword-ranking.md)
 - [Inspect adaptation without writing files or inventing skills](cv-adaptation-boundary.md)
 - [Interpret the bounded lexical fit score](cv-fit-score.md)
+- [Read synthetic text, CSV and DOCX with the adapters](cv-file-readers.md)
