@@ -32,3 +32,4 @@ For review, identify the concrete input, expected behavior, source SHA, command/
 - [Inspect adaptation without writing files or inventing skills](cv-adaptation-boundary.md)
 - [Interpret the bounded lexical fit score](cv-fit-score.md)
 - [Read synthetic text, CSV and DOCX with the adapters](cv-file-readers.md)
+- [Inspect output-name cleanup before choosing a path](cv-output-naming.md)
