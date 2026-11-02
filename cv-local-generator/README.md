@@ -9,11 +9,19 @@ La idea es tener un flujo simple:
 1. Guardas tus documentos master en `core/`.
 2. Pegas una descripcion de cargo o guardas archivos en `jobs/`.
 3. La app compara el cargo contra el core CV y core experience.
-4. Recibes un assessment de probabilidad relativa para aplicar.
+4. Recibes un indicador heurístico de coincidencia de palabras clave para revisar la candidatura.
 5. Decides si procede generar el paquete.
 6. La app genera CV + cover letter en PDF.
 
-La app no inventa empresas, fechas, cargos ni logros. Solo prioriza y redacta usando informacion de los documentos core.
+<!-- (kommiBo) Distinguish keyword scoring and fixed templates from verified career facts. -->
+`assess_fit` calcula coincidencia de palabras clave y limita el score al rango 8–96;
+ese número no es una probabilidad calibrada de contratación ni una garantía de resultado.
+Los textos de la UI que hablan de probabilidad deben interpretarse con ese límite.
+
+`adapt_cv` reordena contenido, infiere un título y construye un resumen. La cover letter
+incluye frases de plantilla sobre experiencia empresarial que pueden no corresponder a
+otro candidato. Revisa cada afirmación, empresa, fecha y logro antes de enviar un PDF;
+la generación local no verifica su veracidad. Consulta los [límites de uso](../TERMS.md).
 
 ## Documentos master
 
@@ -100,7 +108,12 @@ output/pdf/
 
 La app incluye un prompt listo para copiar en ChatGPT manualmente. Esto permite que una persona use una cuenta ChatGPT Free como apoyo, sin integrar llamadas automaticas a la API.
 
-No se agrego integracion directa con OpenAI API porque requiere `OPENAI_API_KEY` y el uso de API se factura por consumo. Para mantener el proyecto open source y accesible, la version actual funciona localmente sin cobros por token.
+<!-- (kommiBo) Local operation is separate from licensing and external assistant costs. -->
+La versión actual funciona localmente y no integra una API de modelos ni facturación por
+tokens. Si copias el prompt a otro asistente, sus condiciones y límites se evalúan por
+separado; no se presupone acceso gratuito, una cuenta concreta ni autorización para enviar
+datos personales. El proyecto no tiene una licencia general seleccionada: consulta el
+[inventario de licencias](../docs/licensing.md) antes de redistribuirlo.
 
 ## Crear instalador / EXE para Windows
 
@@ -116,7 +129,15 @@ El resultado queda en:
 dist/CVLocalGenerator/CVLocalGenerator.exe
 ```
 
-Distribuye la carpeta completa `dist/CVLocalGenerator`, no solo el `.exe`, porque ahi viven `core/`, `jobs/` y `output/`.
+<!-- (kommiBo) The distribution can contain personal source documents. -->
+El build copia `core/`, `jobs/`, `data/` y `docs/` a la carpeta distribuible tal como están;
+no anonimiza sus contenidos. Antes de compilar y compartir, prepara una copia con datos
+sintéticos o cuya divulgación esté autorizada y revisa todo el paquete final.
+
+Si cuentas con los permisos necesarios para distribuirlo, entrega la carpeta completa
+`dist/CVLocalGenerator`, no sólo el `.exe`. El build crea `output/pdf/`; los PDFs generados
+al usar la app son datos locales que también debes revisar antes de compartir esa carpeta.
+Consulta la [guía de manejo de datos](../docs/data-handling.md).
 
 Para una experiencia tipo instalador, puedes comprimir esa carpeta en `.zip`. Mas adelante se puede agregar Inno Setup o WiX para generar un instalador `.msi` o `.exe` con accesos directos.
 
