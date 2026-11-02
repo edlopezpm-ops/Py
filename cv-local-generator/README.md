@@ -129,7 +129,15 @@ El resultado queda en:
 dist/CVLocalGenerator/CVLocalGenerator.exe
 ```
 
-Distribuye la carpeta completa `dist/CVLocalGenerator`, no solo el `.exe`, porque ahi viven `core/`, `jobs/` y `output/`.
+<!-- (kommiBo) The distribution can contain personal source documents. -->
+El build copia `core/`, `jobs/`, `data/` y `docs/` a la carpeta distribuible tal como están;
+no anonimiza sus contenidos. Antes de compilar y compartir, prepara una copia con datos
+sintéticos o cuya divulgación esté autorizada y revisa todo el paquete final.
+
+Si cuentas con los permisos necesarios para distribuirlo, entrega la carpeta completa
+`dist/CVLocalGenerator`, no sólo el `.exe`. El build crea `output/pdf/`; los PDFs generados
+al usar la app son datos locales que también debes revisar antes de compartir esa carpeta.
+Consulta la [guía de manejo de datos](../docs/data-handling.md).
 
 Para una experiencia tipo instalador, puedes comprimir esa carpeta en `.zip`. Mas adelante se puede agregar Inno Setup o WiX para generar un instalador `.msi` o `.exe` con accesos directos.
 
