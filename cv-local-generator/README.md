@@ -187,4 +187,5 @@ No necesitas instalar nada para esa version, pero el PDF se hace desde la ventan
 
 ## Siguiente etapa recomendada
 
-Cuando quieras mejorarlo, el siguiente paso natural es agregar una opcion de AI local/API para reescritura mas fina. La base actual ya deja el JSON editable para revisar cada cambio antes de exportar.
+<!-- (kommiBo) Local processing, disclosure and paid-API boundaries. -->
+La base actual deja el JSON editable para revisar cada cambio antes de exportar. Cualquier futura asistencia de AI requiere una decisión separada de alcance, privacidad y costo; no se habilitan APIs pagadas por defecto. Revisa el prompt antes de copiar datos personales a otra herramienta. Los PDFs, archivos core y jobs permanecen en disco hasta que los elimines; consulta la [guía de manejo de datos](../docs/data-handling.md).
