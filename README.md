@@ -51,13 +51,27 @@ a pull request, the required `Validation` check, and approval and merge by the c
 account against the exact validated head. The writer and reviewer are distinct technical actors
 under one Human Orchestrator in Chief (HOC); this is not an independent audit.
 
-No license has been selected for this repository. Public visibility does not grant permission to
-reuse its contents.
+No license has been selected for this repository. Public hosting permits viewing and forking under GitHub’s platform terms; it does not
+provide a general project reuse license.
 
 <!-- (kommiBo) Source-backed documentation navigation. -->
 ## Engineering recipes
 
 See the [engineering notes](docs/engineering-notes/README.md) for reproducible examples, source references and validation limits.
+
+<!-- (kommiBo) Project-specific behavior, privacy and permission boundaries. -->
+## Privacy, use and permissions
+
+The CV web mode processes requests on loopback and the desktop mode runs locally;
+neither is a hosted AEKR service. Profiling can put source values in logs and HTML.
+Review historical inputs and exports before sharing: local execution alone does not
+make their contents anonymous or safe to publish.
+
+- [Privacy notice](PRIVACY.md): project processing, hosting and requests.
+- [Use and service boundaries](TERMS.md): intended use and license precedence.
+- [Licensing inventory](docs/licensing.md): project, dependency and AEKR provenance scopes.
+- [Data handling](docs/data-handling.md): local artifacts and publication checks.
+- [Security reporting](SECURITY.md): private reports and support limits.
 
 ---
 
