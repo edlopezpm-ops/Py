@@ -108,7 +108,12 @@ output/pdf/
 
 La app incluye un prompt listo para copiar en ChatGPT manualmente. Esto permite que una persona use una cuenta ChatGPT Free como apoyo, sin integrar llamadas automaticas a la API.
 
-No se agrego integracion directa con OpenAI API porque requiere `OPENAI_API_KEY` y el uso de API se factura por consumo. Para mantener el proyecto open source y accesible, la version actual funciona localmente sin cobros por token.
+<!-- (kommiBo) Local operation is separate from licensing and external assistant costs. -->
+La versión actual funciona localmente y no integra una API de modelos ni facturación por
+tokens. Si copias el prompt a otro asistente, sus condiciones y límites se evalúan por
+separado; no se presupone acceso gratuito, una cuenta concreta ni autorización para enviar
+datos personales. El proyecto no tiene una licencia general seleccionada: consulta el
+[inventario de licencias](../docs/licensing.md) antes de redistribuirlo.
 
 ## Crear instalador / EXE para Windows
 
