@@ -9,11 +9,19 @@ La idea es tener un flujo simple:
 1. Guardas tus documentos master en `core/`.
 2. Pegas una descripcion de cargo o guardas archivos en `jobs/`.
 3. La app compara el cargo contra el core CV y core experience.
-4. Recibes un assessment de probabilidad relativa para aplicar.
+4. Recibes un indicador heurístico de coincidencia de palabras clave para revisar la candidatura.
 5. Decides si procede generar el paquete.
 6. La app genera CV + cover letter en PDF.
 
-La app no inventa empresas, fechas, cargos ni logros. Solo prioriza y redacta usando informacion de los documentos core.
+<!-- (kommiBo) Distinguish keyword scoring and fixed templates from verified career facts. -->
+`assess_fit` calcula coincidencia de palabras clave y limita el score al rango 8–96;
+ese número no es una probabilidad calibrada de contratación ni una garantía de resultado.
+Los textos de la UI que hablan de probabilidad deben interpretarse con ese límite.
+
+`adapt_cv` reordena contenido, infiere un título y construye un resumen. La cover letter
+incluye frases de plantilla sobre experiencia empresarial que pueden no corresponder a
+otro candidato. Revisa cada afirmación, empresa, fecha y logro antes de enviar un PDF;
+la generación local no verifica su veracidad. Consulta los [límites de uso](../TERMS.md).
 
 ## Documentos master
 
