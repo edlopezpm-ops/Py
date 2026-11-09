@@ -40,10 +40,11 @@ Para cambiar la experiencia base, reemplaza esos archivos con nuevos documentos 
 
 ## Version Python recomendada
 
-Instala dependencias:
+<!-- (kommiBo) Make the working directory and launcher effects explicit. -->
+Para instalar las dependencias manualmente desde la carpeta raiz `Py`:
 
 ```powershell
-py -m pip install -r requirements.txt
+py -m pip install -r .\cv-local-generator\requirements.txt
 ```
 
 Desde la carpeta raiz `Py`, puedes ejecutar la app de escritorio con un solo comando:
@@ -58,11 +59,17 @@ Si estas dentro de `cv-local-generator`, usa:
 .\Run-CVGenerator.ps1
 ```
 
-Para validar sin abrir la ventana:
+Para ejecutar la comprobacion funcional sin abrir la ventana:
 
 ```powershell
 .\Run-CVGenerator.ps1 -Check
 ```
+
+Ambos launchers instalan las dependencias si falta `reportlab`. Ademas, `-Check`
+compila los modulos, lee los documentos de `core/` y `jobs/sample-job.txt`, y genera
+un CV y una cover letter en `output/pdf/` dentro de `cv-local-generator`. No es una
+comprobacion de solo lectura: usa una copia con datos sinteticos si no quieres
+generar documentos con los masters actuales.
 
 Para abrir la version navegador:
 
@@ -70,7 +77,7 @@ Para abrir la version navegador:
 .\Run-CVGenerator.ps1 -Web
 ```
 
-Tambien puedes ejecutar la app web directamente:
+Tambien puedes ejecutar la app web directamente desde `cv-local-generator`:
 
 ```powershell
 py cv_app.py
@@ -84,7 +91,7 @@ http://127.0.0.1:8765
 
 ## Version escritorio
 
-Tambien puedes usar una UI simple de escritorio:
+Tambien puedes usar una UI simple de escritorio desde `cv-local-generator`:
 
 ```powershell
 py desktop_app.py
@@ -117,7 +124,7 @@ datos personales. El proyecto no tiene una licencia general seleccionada: consul
 
 ## Crear instalador / EXE para Windows
 
-La forma mas simple es crear una carpeta distribuible con un `.exe`:
+Desde `cv-local-generator`, crea una carpeta distribuible con un `.exe`:
 
 ```powershell
 .\build_windows_exe.ps1
@@ -176,6 +183,13 @@ No necesitas instalar nada para esa version, pero el PDF se hace desde la ventan
 
 ## Formato JSON esperado
 
+<!-- (kommiBo) Separate editable preview state from the Python web export input. -->
+En la version web Python, editar el JSON actualiza solo la vista previa. El boton
+`Generar CV + Cover Letter` envia unicamente la descripcion del cargo y reconstruye
+el paquete desde los archivos master: las ediciones del JSON no pasan a los PDFs
+y la respuesta reemplaza la vista previa. Revisa los documentos generados antes
+de usarlos; una correccion visible en el preview no acredita una correccion en el PDF.
+
 ```json
 {
   "profile": {
@@ -209,4 +223,4 @@ No necesitas instalar nada para esa version, pero el PDF se hace desde la ventan
 ## Siguiente etapa recomendada
 
 <!-- (kommiBo) Local processing, disclosure and paid-API boundaries. -->
-La base actual deja el JSON editable para revisar cada cambio antes de exportar. Cualquier futura asistencia de AI requiere una decisión separada de alcance, privacidad y costo; no se habilitan APIs pagadas por defecto. Revisa el prompt antes de copiar datos personales a otra herramienta. Los PDFs, archivos core y jobs permanecen en disco hasta que los elimines; consulta la [guía de manejo de datos](../docs/data-handling.md).
+Cualquier futura asistencia de AI requiere una decisión separada de alcance, privacidad y costo; no se habilitan APIs pagadas por defecto. Revisa el prompt antes de copiar datos personales a otra herramienta. Los PDFs, archivos core y jobs permanecen en disco hasta que los elimines; consulta la [guía de manejo de datos](../docs/data-handling.md).
