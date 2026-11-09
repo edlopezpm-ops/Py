@@ -1,7 +1,7 @@
 <!-- (kommiBo) Source-reviewed learning recipe; synthetic examples only. -->
 # Navigate nested dictionaries and count repeated values
 
-Use exact key paths for nested data and verify totals after aggregation. Include an explicit missing-key case before reusing the counting pattern.
+Use exact key paths for nested data and check totals after aggregation. Cover an explicit missing-key case before reusing the counting pattern.
 
 Source: [BuildIns.py nested keys](../../Py%20Scripts/BuildIns.py#L17) and [frequency loop](../../Py%20Scripts/BuildIns.py#L41). The example follows the checked-in implementation; it does not change that implementation.
 
