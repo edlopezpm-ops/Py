@@ -257,7 +257,8 @@ def read_job_file(path: Path) -> str:
 
 
 def list_jobs() -> list[dict]:
-    supported = {".txt", ".md", ".csv", ".html", ".htm", ".docx", ".doc"}
+    # (kommiBo) Offer only formats read_job_file can actually load.
+    supported = {".txt", ".md", ".csv", ".html", ".htm", ".docx"}
     jobs = []
     for path in sorted(JOBS_DIR.iterdir()):
         if path.is_file() and path.suffix.lower() in supported:

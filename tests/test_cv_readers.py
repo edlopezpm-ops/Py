@@ -6,6 +6,7 @@ from io import BytesIO
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 from zipfile import ZipFile
 
 
@@ -66,6 +67,27 @@ class DocxReaderTests(unittest.TestCase):
             ) as document:
                 job.write_bytes(document.getvalue())
             self.assertEqual("Python SQL automation", cv_app.read_job_file(job))
+
+
+class JobListingTests(unittest.TestCase):
+    def test_list_excludes_legacy_documents_and_keeps_supported_files(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="cv-job-list-test-") as directory:
+            jobs = Path(directory)
+            for name in ("legacy.doc", "legacy.DOC", "job.docx", "notes.TXT", "other.pdf"):
+                (jobs / name).touch()
+            (jobs / "folder.docx").mkdir()
+            with patch.object(cv_app, "JOBS_DIR", jobs):
+                names = [job["name"] for job in cv_app.list_jobs()]
+            self.assertEqual(["job.docx", "notes.TXT"], names)
+
+    def test_legacy_document_read_retains_conversion_error(self) -> None:
+        for name in ("synthetic.doc", "synthetic.DOC"):
+            with self.subTest(name=name), self.assertRaises(ValueError) as error:
+                cv_app.read_job_file(Path(name))
+            self.assertEqual(
+                "Los .doc antiguos no se leen sin Word. Guardalo como .docx o .txt.",
+                str(error.exception),
+            )
 
 
 if __name__ == "__main__":
