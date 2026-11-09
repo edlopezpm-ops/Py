@@ -213,8 +213,20 @@ def read_docx(path: Path) -> str:
     with zipfile.ZipFile(path) as docx:
         xml_bytes = docx.read("word/document.xml")
     root = ElementTree.fromstring(xml_bytes)
+    # (kommiBo) Keep run separators, ignoring paragraph formatting such as tab stops.
+    text_tag = f"{{{ns['w']}}}t"
+    separators = {
+        f"{{{ns['w']}}}tab": "\t",
+        f"{{{ns['w']}}}br": "\n",
+        f"{{{ns['w']}}}cr": "\n",
+    }
     for paragraph in root.findall(".//w:p", ns):
-        texts = [node.text or "" for node in paragraph.findall(".//w:t", ns)]
+        texts = []
+        for node in paragraph.findall(".//w:r/*", ns):
+            if node.tag == text_tag:
+                texts.append(node.text or "")
+            elif node.tag in separators:
+                texts.append(separators[node.tag])
         if texts:
             parts.append("".join(texts))
     return "\n".join(parts)
@@ -245,7 +257,8 @@ def read_job_file(path: Path) -> str:
 
 
 def list_jobs() -> list[dict]:
-    supported = {".txt", ".md", ".csv", ".html", ".htm", ".docx", ".doc"}
+    # (kommiBo) Offer only formats read_job_file can actually load.
+    supported = {".txt", ".md", ".csv", ".html", ".htm", ".docx"}
     jobs = []
     for path in sorted(JOBS_DIR.iterdir()):
         if path.is_file() and path.suffix.lower() in supported:

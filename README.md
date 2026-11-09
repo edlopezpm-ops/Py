@@ -30,7 +30,10 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
 This validation parses every Python source file, loads every JSON document, and checks that the
-documented entry points and CI contract exist. It does not execute the data-profiling job, launch
+documented entry points and CI contract exist. Synthetic reader tests also check DOCX word
+separators and supported job-file discovery without reading personal core or job files.
+<!-- (kommiBo) Keep validation coverage aligned with the synthetic reader regressions. -->
+It does not execute the data-profiling job, launch
 the user interfaces, import FreeCAD, or claim runtime correctness for every historical exercise.
 
 ## Running the CV generator
