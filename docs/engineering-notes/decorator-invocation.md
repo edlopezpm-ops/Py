@@ -1,7 +1,7 @@
 <!-- (kommiBo) Source-reviewed learning recipe; synthetic examples only. -->
 # Observe a decorated call and its returned value
 
-The original final print displays a function object. Call the decorated function to observe the wrapper message and arithmetic return separately.
+The original final print shows a function object. Call the decorated function to inspect the wrapper message and arithmetic return separately.
 
 Source: [decoradores.py](../../Py%20Scripts/decoradores.py#L3). The example follows the checked-in implementation; it does not change that implementation.
 

@@ -1,7 +1,7 @@
 <!-- (kommiBo) Source-reviewed learning recipe; synthetic examples only. -->
 # Read synthetic text, CSV and DOCX with the adapters
 
-Create temporary files with known text and a minimal DOCX ZIP member. Verify extraction and the explicit legacy DOC rejection without opening the jobs directory.
+Prepare temporary files with known text and a minimal DOCX ZIP member. Check extraction and the explicit legacy DOC rejection without opening the jobs directory.
 
 Source: [read_docx/read_csv_text/read_job_file](../../cv-local-generator/cv_app.py#L212). The example follows the checked-in implementation; it does not change that implementation.
 

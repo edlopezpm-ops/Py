@@ -1,7 +1,7 @@
 <!-- (kommiBo) Source-reviewed learning recipe; synthetic examples only. -->
 # Inspect adaptation without writing files or inventing skills
 
-Adapt an invented base CV in memory. Check immutability, promotion of existing matching skills and preservation of existing bullet text, then inspect generated-summary effects on analysis.
+Adapt a synthetic base CV in memory. Check immutability, promotion of existing matching skills and preservation of existing bullet text, then examine generated-summary effects on analysis.
 
 Source: [adapt_cv/build_summary](../../cv-local-generator/cv_app.py#L303). The example follows the checked-in implementation; it does not change that implementation.
 
