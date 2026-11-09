@@ -1,7 +1,7 @@
 <!-- (kommiBo) Source-reviewed learning recipe; synthetic examples only. -->
 # Normalize a synthetic CV into the current data shape
 
-Inspect coercion and absent fields before ranking or rendering. The normalizer builds a fresh schema-shaped dictionary from expected mappings and lists.
+Examine coercion and missing fields before ranking or rendering. The normalizer creates a new schema-shaped dictionary from expected mappings and lists.
 
 Source: [normalize_cv](../../cv-local-generator/cv_app.py#L168). The example follows the checked-in implementation; it does not change that implementation.
 

@@ -1,7 +1,7 @@
 <!-- (kommiBo) Source-reviewed learning recipe; synthetic examples only. -->
 # Parse synthetic core sections and skill separators
 
-Use the recognized heading and role conventions to inspect parser behavior. The fixture uses a reserved example email and invented experience.
+Follow the recognized heading and role conventions to examine parser behavior. The fixture uses a reserved example email and fictional experience.
 
 Source: [split_skill_line/lines_between](../../cv-local-generator/cv_app.py#L79) and [core_to_cv](../../cv-local-generator/cv_app.py#L101). The example follows the checked-in implementation; it does not change that implementation.
 
