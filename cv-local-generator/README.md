@@ -183,6 +183,13 @@ No necesitas instalar nada para esa version, pero el PDF se hace desde la ventan
 
 ## Formato JSON esperado
 
+<!-- (kommiBo) Separate editable preview state from the Python web export input. -->
+En la version web Python, editar el JSON actualiza solo la vista previa. El boton
+`Generar CV + Cover Letter` envia unicamente la descripcion del cargo y reconstruye
+el paquete desde los archivos master: las ediciones del JSON no pasan a los PDFs
+y la respuesta reemplaza la vista previa. Revisa los documentos generados antes
+de usarlos; una correccion visible en el preview no acredita una correccion en el PDF.
+
 ```json
 {
   "profile": {
@@ -216,4 +223,4 @@ No necesitas instalar nada para esa version, pero el PDF se hace desde la ventan
 ## Siguiente etapa recomendada
 
 <!-- (kommiBo) Local processing, disclosure and paid-API boundaries. -->
-La base actual deja el JSON editable para revisar cada cambio antes de exportar. Cualquier futura asistencia de AI requiere una decisión separada de alcance, privacidad y costo; no se habilitan APIs pagadas por defecto. Revisa el prompt antes de copiar datos personales a otra herramienta. Los PDFs, archivos core y jobs permanecen en disco hasta que los elimines; consulta la [guía de manejo de datos](../docs/data-handling.md).
+Cualquier futura asistencia de AI requiere una decisión separada de alcance, privacidad y costo; no se habilitan APIs pagadas por defecto. Revisa el prompt antes de copiar datos personales a otra herramienta. Los PDFs, archivos core y jobs permanecen en disco hasta que los elimines; consulta la [guía de manejo de datos](../docs/data-handling.md).
