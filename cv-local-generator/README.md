@@ -119,8 +119,10 @@ La app incluye un prompt listo para copiar en ChatGPT manualmente. Esto permite 
 La versión actual funciona localmente y no integra una API de modelos ni facturación por
 tokens. Si copias el prompt a otro asistente, sus condiciones y límites se evalúan por
 separado; no se presupone acceso gratuito, una cuenta concreta ni autorización para enviar
-datos personales. El proyecto no tiene una licencia general seleccionada: consulta el
-[inventario de licencias](../docs/licensing.md) antes de redistribuirlo.
+datos personales. La implementación y esta guía incluidas expresamente en
+[LICENSE](../LICENSE) están disponibles bajo [MIT](../LICENSES/MIT.txt). Los CV,
+archivos core, ofertas de empleo, datos y exports no reciben ese permiso. Consulta
+el [inventario de licencias](../docs/licensing.md) antes de redistribuir un paquete.
 
 ## Crear instalador / EXE para Windows
 

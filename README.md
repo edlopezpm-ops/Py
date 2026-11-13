@@ -54,8 +54,10 @@ a pull request, the required `Validation` check, and approval and merge by the c
 account against the exact validated head. The writer and reviewer are distinct technical actors
 under one Human Orchestrator in Chief (HOC); this is not an independent audit.
 
-No license has been selected for this repository. Public hosting permits viewing and forking under GitHub’s platform terms; it does not
-provide a general project reuse license.
+The original code and technical documentation listed in [LICENSE](LICENSE) are
+released under the standard [MIT License](LICENSES/MIT.txt). This is an exact-path
+grant, not a blanket license for the repository: personal CV/job inputs, operational
+reports, assets and other unlisted material retain their separate rights.
 
 <!-- (kommiBo) Source-backed documentation navigation. -->
 ## Engineering recipes
