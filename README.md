@@ -76,6 +76,9 @@ make their contents anonymous or safe to publish.
 - [Data handling](docs/data-handling.md): local artifacts and publication checks.
 - [Security reporting](SECURITY.md): private reports and support limits.
 
+<!-- (kommiBo) Route contributors to project-specific evidence and permission requirements. -->
+See [CONTRIBUTING.md](CONTRIBUTING.md) for reproducible reports, validation scope and review evidence.
+
 ---
 
 Built with the **[AI Engineering Knowledge Racking (AEKR)](https://aekr.io)** workflow.
