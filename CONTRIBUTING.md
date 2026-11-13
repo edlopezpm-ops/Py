@@ -10,10 +10,12 @@ version, exact command, expected result and observed result. Use synthetic examp
 do not attach a real CV, job application, profiling export or credentials to a public issue.
 Send security-sensitive reports through [SECURITY.md](SECURITY.md).
 
-This repository has no general project license. Discuss permission before redistributing
-or adapting material beyond GitHub's platform permissions, and provide only material you
-are authorized to submit. This guide grants no additional rights or contributor agreement;
-see the [licensing inventory](docs/licensing.md) and [use boundaries](TERMS.md).
+Files expressly listed in [LICENSE](LICENSE) are available under the standard
+[MIT License](LICENSES/MIT.txt), without a separate approval or website-terms
+condition. Check the scope before reusing other material: personal inputs and reports
+are excluded. Submit only material you are authorized to provide. This guide creates
+no additional contributor agreement; see the [licensing inventory](docs/licensing.md)
+and [use boundaries](TERMS.md).
 
 ## Validate the affected component
 

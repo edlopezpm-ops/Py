@@ -1,0 +1,100 @@
+# License scope — Py
+
+<!-- (kommiBo) Owner-authorized licensing decision, 2026-11-12. -->
+
+Copyright (c) 2026 Ed Lopez
+
+## MIT grant for the listed material
+
+The original project material at the exact repository-relative paths below is released
+under the standard [MIT License](LICENSES/MIT.txt). This file is the authoritative scope
+index; each entry is a literal path, not a directory wildcard. The complete MIT text
+provides the grant, conditions and disclaimer. Reuse of covered material does not require
+separate approval, a non-commercial purpose or agreement to the AEKR website terms.
+
+- `Py Scripts/BuildIns.py`
+- `Py Scripts/HelloWordOverEng.py`
+- `Py Scripts/HolaMundo.py`
+- `Py Scripts/MasterPyKWs.py`
+- `Py Scripts/Practice.py`
+- `Py Scripts/Practice2.py`
+- `Py Scripts/SampleKeywords.py`
+- `Py Scripts/decoradores.py`
+- `Py Scripts/enciclopedia_python.py`
+- `Py Scripts/enciclopedia_sql.py`
+- `Py Scripts/simplepractice_malo.py`
+- `Py Scripts/vene.py`
+- `Run-CVGenerator.ps1`
+- `Sicuel Scripts/T1.sql`
+- `cv-local-generator/FreeCAD Hull/FullCatamaranHull.py`
+- `cv-local-generator/FreeCAD Hull/SampleCatHull.py`
+- `cv-local-generator/FreeCAD_WHRackDesing/WarehouseRack3x3.py`
+- `cv-local-generator/README.md`
+- `cv-local-generator/Run-CVGenerator.ps1`
+- `cv-local-generator/app.html`
+- `cv-local-generator/build_windows_exe.ps1`
+- `cv-local-generator/cv_app.py`
+- `cv-local-generator/desktop_app.py`
+- `cv-local-generator/requirements-build.txt`
+- `cv-local-generator/requirements.txt`
+- `docs/engineering-notes/README.md`
+- `docs/engineering-notes/arithmetic-and-truthiness.md`
+- `docs/engineering-notes/container-prompt-paths.md`
+- `docs/engineering-notes/cv-adaptation-boundary.md`
+- `docs/engineering-notes/cv-core-sections.md`
+- `docs/engineering-notes/cv-file-readers.md`
+- `docs/engineering-notes/cv-fit-score.md`
+- `docs/engineering-notes/cv-keyword-ranking.md`
+- `docs/engineering-notes/cv-normalization.md`
+- `docs/engineering-notes/cv-output-naming.md`
+- `docs/engineering-notes/cv-text-cleaning.md`
+- `docs/engineering-notes/decorator-invocation.md`
+- `docs/engineering-notes/dictionary-navigation.md`
+- `docs/engineering-notes/greeting-dependency-injection.md`
+- `docs/engineering-notes/keyword-runtime-map.md`
+- `docs/engineering-notes/profiling-input-contract.md`
+- `docs/engineering-notes/syntax-inventory.md`
+- `docs/engineering-notes/unit-conversion-boundary.md`
+- `docs/examples/_cv_source.py`
+- `docs/examples/arithmetic-and-truthiness.py`
+- `docs/examples/container-prompt-paths.py`
+- `docs/examples/cv-adaptation-boundary.py`
+- `docs/examples/cv-core-sections.py`
+- `docs/examples/cv-file-readers.py`
+- `docs/examples/cv-fit-score.py`
+- `docs/examples/cv-keyword-ranking.py`
+- `docs/examples/cv-normalization.py`
+- `docs/examples/cv-output-naming.py`
+- `docs/examples/cv-text-cleaning.py`
+- `docs/examples/decorator-invocation.py`
+- `docs/examples/dictionary-navigation.py`
+- `docs/examples/greeting-dependency-injection.py`
+- `docs/examples/keyword-runtime-map.py`
+- `docs/examples/profiling-input-contract.py`
+- `docs/examples/syntax-inventory.py`
+- `docs/examples/unit-conversion-boundary.py`
+- `tests/test_cv_readers.py`
+- `tests/test_repository.py`
+
+## Other material and existing rights
+
+This grant covers the listed project material, not the entire repository or the software
+packages it imports, downloads or invokes. Unlisted material receives no new permission
+from this decision. Any existing separate license or written permission continues to
+apply according to its own scope; rights already granted for earlier copies are preserved.
+Applicable mandatory rights and GitHub's platform permissions are not restricted here.
+
+In particular, this grant does not cover `DataAnalyticsPy/`, `HTML5 Scripts/`,
+`cv-local-generator/core/`, `cv-local-generator/data/`, `cv-local-generator/jobs/`,
+`assets/`, personal documents, operational inputs, generated reports or exports.
+The CV implementation and its listed technical guide can be reused under MIT; that does
+not grant permission to reuse the personal or third-party material processed by it.
+
+The existing `assets/AEKR-BANNER-LICENSE.txt` retains its separate scope and notices.
+No trademark, logo, endorsement or personal-data permission is created by this grant.
+Preserve the applicable notices for any separately licensed material you distribute.
+
+For the component inventory and decision history, see [docs/licensing.md](docs/licensing.md).
+That document explains this index and does not expand its list. Adding a new file to the
+repository does not automatically add it to this MIT grant; update the index explicitly
+when the rights holder elects to include it.
