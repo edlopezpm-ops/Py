@@ -2,7 +2,29 @@
 
 # Use and service boundaries — Py
 
-Reviewed 2026-11-02.
+Reviewed 2026-11-12.
+
+<!-- (kommiBo) Explicit reference to the separately scoped AEKR website terms. -->
+## Relationship to the AEKR website terms
+
+The [AEKR website Terms of Service](https://aekr.io/terms), version **20261025**
+reviewed on 2026-11-12, describe use of the AEKR website and its available functions.
+Their separate-service, explicit-choice and material-rights boundaries inform these
+repository notes. They do not replace this repository's license, its project-specific
+use limits or a separately agreed service contract.
+
+Reading, cloning or linking this repository does not record acceptance of the website
+terms. Website contact or research forms have their own actual acknowledgment process;
+this Markdown file implements none. The website's [Privacy](https://aekr.io/privacy)
+and [Cookies](https://aekr.io/cookies) notices describe that website's processing, while
+the [repository privacy notice](PRIVACY.md) describes this project's scope. Linking
+those notices adds no analytics, data collection, consent record or cross-product
+identity link to this repository.
+
+The linked site can change independently. The version above records the reference
+reviewed for this update, not automatic acceptance of later versions or a retroactive
+change to existing permissions. Questions about the applicable surface or version go
+to [aekr@aekr.io](mailto:aekr@aekr.io).
 
 ## What is provided
 
